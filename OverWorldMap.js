@@ -29,13 +29,15 @@ window.OverworldMaps = {
                 isPlayerControlled: true,
                 x: utils.withGrid(4),
                 y: utils.withGrid(6),
-                src: "images/people/girlPokemon.png"
+                src: "images/people/girlPokemon.png",
+                useShadow: true,
             }),
             hero : new Person({
                 isPlayerControlled: false,
                 x:utils.withGrid(5),
                 y:utils.withGrid(4),
-                src:"images/people/redMod.png"
+                src:"images/people/redMod.png",
+                useShadow: true
             })
         
         }
