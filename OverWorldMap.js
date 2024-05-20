@@ -26,12 +26,13 @@ window.OverworldMaps = {
         upperSrc: "/images/maps/KitchenUpper.png",
         gameObjects: {
             girl: new Person({
+                isPlayerControlled: true,
                 x: utils.withGrid(4),
                 y: utils.withGrid(6),
                 src: "images/people/girlPokemon.png"
             }),
             hero : new Person({
-                isPlayerControlled: true,
+                isPlayerControlled: false,
                 x:utils.withGrid(5),
                 y:utils.withGrid(4),
                 src:"images/people/redMod.png"
