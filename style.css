@@ -18,7 +18,7 @@ body{
     margin: auto;
     margin-top: 20px;
 
-    transform: scale(3) translateY(35%);
+    transform: scale(4) translateY(35%);
 }
 
 .game-container canvas{
