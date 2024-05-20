@@ -6,7 +6,7 @@ class GameObjects{
         this.sprite = new Sprite({
             gameObject: this,
             src: config.src || "images/people/redMod.png",
-            useShadow: config.useShadow || false
+            useShadow: config.useShadow || false,
         });
     }
     update(){
