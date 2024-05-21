@@ -8,12 +8,16 @@ class OverworldMap {
         this.upperImage.src = config.upperSrc;
     }
 
-    drawLower(ctx){
-        ctx.drawImage(this.lowerImage,0,0);
+    drawLower(ctx,cameraPerson){
+        const x = utils.withGrid(10.5)-cameraPerson.x;
+        const y = utils.withGrid(6)-cameraPerson.y;
+        ctx.drawImage(this.lowerImage,x,y);
     }
 
-    drawUpper(ctx){
-        ctx.drawImage(this.upperImage,0,0);
+    drawUpper(ctx,cameraPerson){
+        const x = utils.withGrid(10.5)-cameraPerson.x;
+        const y = utils.withGrid(6)-cameraPerson.y;
+        ctx.drawImage(this.upperImage,x,y);
     }
 
     

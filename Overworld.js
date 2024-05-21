@@ -7,25 +7,30 @@ class Overworld{
     startGameLoop(){
       const step = () => {
         //console.log("FPS");
-
-
         //clear the canvas 
         this.ctx.clearRect(0,0,this.canvas.width, this.canvas.height);
-        //draw lower Image
-        this.map.drawLower(this.ctx);
 
-        //draw GameObjects
+        //the camera person
+        const cameraPerson = this.map.gameObjects.girl;
+
+        //Update all the objects before drawing
         Object.values(this.map.gameObjects).forEach(object =>{
-          object.sprite.draw(this.ctx);
           object.update({
             arrow: this.directionInput.direction,
             button: this.directionInput.button,
           })
+        })
 
+        //draw lower Image
+        this.map.drawLower(this.ctx,cameraPerson);
+
+        //draw GameObjects
+        Object.values(this.map.gameObjects).forEach(object =>{
+          object.sprite.draw(this.ctx,cameraPerson);
         })
 
         //draw upper Image
-        this.map.drawUpper(this.ctx);
+        this.map.drawUpper(this.ctx,cameraPerson);
 
 
         requestAnimationFrame(()=>{
