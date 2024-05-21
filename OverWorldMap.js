@@ -27,7 +27,7 @@ class OverworldMap {
 window.OverworldMaps = {
     DemoRoom: {
         lowerSrc: "/images/maps/DemoRoom.png",
-        upperSrc: "/images/maps/KitchenUpper.png",
+        upperSrc: "/images/maps/DemoUpper.png",
         gameObjects: {
             lugia: new PoketMonster({
                 x: utils.withGrid(0),
@@ -46,8 +46,8 @@ window.OverworldMaps = {
                 useShadow: true,
             }),
             hero : new Person({
-                x:utils.withGrid(5),
-                y:utils.withGrid(4),
+                x:utils.withGrid(2),
+                y:utils.withGrid(7),
                 src:"images/people/redMod.png",
                 useShadow: true
             }),
