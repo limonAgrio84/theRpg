@@ -2,7 +2,7 @@ class PoketMonster extends Person{
     constructor(config){
         super(config);
         this.player = config.player;
-        this.isActive = true;
+        this.isActive = false;
         this.specialSize = config.specialSize || false;
     }
 

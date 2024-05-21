@@ -18,6 +18,7 @@ class Overworld{
           object.update({
             arrow: this.directionInput.direction,
             button: this.directionInput.button,
+            map:this.map,
           })
         })
 
@@ -42,7 +43,7 @@ class Overworld{
 
     init(){
       this.map = new OverworldMap(window.OverworldMaps.DemoRoom);
-
+      this.map.mountObjects();
       this.directionInput = new InputDirection();
       this.directionInput.init()
       this.startGameLoop();

@@ -6,6 +6,8 @@ class OverworldMap {
         this.lowerImage.src = config.lowerSrc;
         this.upperImage = new Image();
         this.upperImage.src = config.upperSrc;
+
+        this.walls = config.walls || {};
     }
 
     drawLower(ctx,cameraPerson){
@@ -20,6 +22,32 @@ class OverworldMap {
         ctx.drawImage(this.upperImage,x,y);
     }
 
+    isSpaceTaken(currentX,currentY,direction){
+        const {x,y} = utils.nextPosition(currentX,currentY,direction);
+        return this.walls[`${x},${y}`] || false;
+    }
+
+    mountObjects(){
+        Object.values(this.gameObjects).forEach(object =>{
+            //TODO: determine if this object is actually mount
+            object.mount(this);
+        })
+    }
+
+    addWall(x,y){
+        this.walls[`${x},${y}`] = true;
+    }
+
+    removeWall(x,y){
+        delete this.walls[`${x},${y}`];
+    }
+
+    moveWall(wasX,wasY,direction){
+        this.removeWall(wasX,wasY);
+        const {x,y} = utils.nextPosition(wasX,wasY,direction);
+        this.addWall(x,y);
+    }
+
     
 }
 
@@ -30,8 +58,8 @@ window.OverworldMaps = {
         upperSrc: "/images/maps/DemoUpper.png",
         gameObjects: {
             lugia: new PoketMonster({
-                x: utils.withGrid(0),
-                y:utils.withGrid(0),
+                x: utils.withGrid(-100),
+                y:utils.withGrid(-100),
                 src: "images/poket-monsters/totodile.png",
                 useShadow: true,
                 //Solo si es un Pokemon Grande specialAnimation: 64,
@@ -51,7 +79,12 @@ window.OverworldMaps = {
                 src:"images/people/redMod.png",
                 useShadow: true
             }),
-        
+        },
+        walls: {
+            [utils.asGridCoords(7,6)]:true,
+            [utils.asGridCoords(7,7)]:true,
+            [utils.asGridCoords(8,6)]:true,
+            [utils.asGridCoords(8,7)]:true,
         }
     }
     
