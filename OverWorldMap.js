@@ -25,21 +25,30 @@ window.OverworldMaps = {
         lowerSrc: "/images/maps/DemoRoom.png",
         upperSrc: "/images/maps/KitchenUpper.png",
         gameObjects: {
+            cindaquil: new PoketMonster({
+                x: utils.withGrid(4),
+                y:utils.withGrid(5),
+                src: "images/poket-monsters/cindaquil.png",
+                useShadow: true,
+                player: null 
+            }),
             girl: new Person({
+                isPlayerControlled: true,
                 x: utils.withGrid(4),
                 y: utils.withGrid(6),
                 src: "images/people/girlPokemon.png",
                 useShadow: true,
             }),
             hero : new Person({
-                isPlayerControlled: true,
                 x:utils.withGrid(5),
                 y:utils.withGrid(4),
                 src:"images/people/redMod.png",
                 useShadow: true
-            })
+            }),
         
         }
     }
     
 }
+
+window.OverworldMaps.DemoRoom.gameObjects.cindaquil.player =  window.OverworldMaps.DemoRoom.gameObjects.girl;

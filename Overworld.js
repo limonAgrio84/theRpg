@@ -18,8 +18,10 @@ class Overworld{
         Object.values(this.map.gameObjects).forEach(object =>{
           object.sprite.draw(this.ctx);
           object.update({
-            arrow: this.directionInput.direction
+            arrow: this.directionInput.direction,
+            button: this.directionInput.button,
           })
+
         })
 
         //draw upper Image
