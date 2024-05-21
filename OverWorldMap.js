@@ -62,8 +62,10 @@ window.OverworldMaps = {
                 y:utils.withGrid(-100),
                 src: "images/poket-monsters/totodile.png",
                 useShadow: true,
-                //Solo si es un Pokemon Grande specialAnimation: 64,
-                //Solo si es un Pokemon Grande specialSize: true,
+                //Solo si es un Pokemon Grande 
+                //specialAnimation: 64,
+                //Solo si es un Pokemon Grande 
+                //specialSize: true,
                 player: null 
             }),
             girl: new Person({
