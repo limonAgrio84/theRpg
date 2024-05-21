@@ -7,6 +7,7 @@ class GameObjects{
             gameObject: this,
             src: config.src || "images/people/redMod.png",
             useShadow: config.useShadow || false,
+            specialAnimation: config.specialAnimation || 32,
         });
     }
     update(){

@@ -3,6 +3,7 @@ class PoketMonster extends Person{
         super(config);
         this.player = config.player;
         this.isActive = true;
+        this.specialSize = config.specialSize || false;
     }
 
     update(state){
@@ -24,21 +25,42 @@ class PoketMonster extends Person{
         const playerX = this.player.x;
         const playerY = this.player.y;
         const dir = this.player.direction;
-
+        if(dir === "up" && this.specialSize){
+            this.x = playerX-15;
+            this.y = playerY+8;
+            return;
+        }
         if(dir === "up"){
             this.x = playerX;
             this.y = playerY+16;
+            return;
+        }
+        if(dir === "down" && this.specialSize){
+            this.x = playerX-15;
+            this.y = playerY-48;
             return;
         }
         else if(dir === "down"){
             this.x = playerX;
             this.y = playerY-16;
             return;
-        } else if(dir === "left"){
+        }
+        if(dir === "left" && this.specialSize){
+            this.x = playerX+16;
+            this.y = playerY-25;
+            return;
+        }
+         else if(dir === "left"){
             this.x = playerX +16;
             this.y = playerY;
             return;
-        }else if (dir === "right"){
+        }
+        if(dir === "right" && this.specialSize){
+            this.x = playerX-48;
+            this.y = playerY-25;
+            return;
+        }
+        else if (dir === "right"){
             this.x = playerX -16;
             this.y = playerY;
             return;
@@ -65,8 +87,8 @@ class PoketMonster extends Person{
     toogleIsActive(){
         if(this.isActive){
             this.isActive = false;
-            this.x = -1000;
-            this.y = -1000;
+            this.x = -100;
+            this.y = -100;
             console.log("ve a la pokeball!");
         }else{
             this.isActive = true

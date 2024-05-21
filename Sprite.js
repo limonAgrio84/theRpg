@@ -5,6 +5,7 @@ class Sprite{
         this.image.onload = ()=>{
             this.isLoaded = true;
         }
+        this.specialAnimation = config.specialAnimation;
         
         //shadows
         this.shadow = new Image();
@@ -73,7 +74,16 @@ class Sprite{
 
         const [frameX,frameY] = this.frame;
 
-        this.isLoaded && ctx.drawImage(this.image,frameX*32,frameY*32,32,32,x,y,32,32)
+        this.isLoaded && ctx.drawImage(this.image,
+            frameX*this.specialAnimation,
+            frameY*this.specialAnimation,
+            this.specialAnimation,
+            this.specialAnimation,
+            x,
+            y,
+            this.specialAnimation,
+            this.specialAnimation,
+        )
         this.isShadowLoaded && ctx.drawImage(this.shadow,x,y);
         this.updateAnimationProgress();
     }
