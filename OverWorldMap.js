@@ -8,6 +8,8 @@ class OverworldMap {
         this.upperImage.src = config.upperSrc;
 
         this.walls = config.walls || {};
+
+        this.isCutscenePlaying = false;
     }
 
     drawLower(ctx,cameraPerson){
@@ -28,7 +30,9 @@ class OverworldMap {
     }
 
     mountObjects(){
-        Object.values(this.gameObjects).forEach(object =>{
+        Object.keys(this.gameObjects).forEach(key =>{
+            let object = this.gameObjects[key];
+            object.id = key
             //TODO: determine if this object is actually mount
             object.mount(this);
         })
@@ -57,30 +61,49 @@ window.OverworldMaps = {
         lowerSrc: "/images/maps/DemoRoom.png",
         upperSrc: "/images/maps/DemoUpper.png",
         gameObjects: {
-            lugia: new PoketMonster({
-                x: utils.withGrid(-100),
-                y:utils.withGrid(-100),
-                src: "images/poket-monsters/totodile.png",
-                useShadow: true,
+            //lugia: new PoketMonster({
+               // x: utils.withGrid(-100),
+                //y:utils.withGrid(-100),
+                //src: "images/poket-monsters/totodile.png",
+                //useShadow: true,
                 //Solo si es un Pokemon Grande 
                 //specialAnimation: 64,
                 //Solo si es un Pokemon Grande 
                 //specialSize: true,
-                player: null 
-            }),
+                //player: null 
+            //}),
             girl: new Person({
                 isPlayerControlled: true,
                 x: utils.withGrid(4),
                 y: utils.withGrid(6),
                 src: "images/people/girlPokemon.png",
                 useShadow: true,
+                
             }),
             hero : new Person({
                 x:utils.withGrid(2),
                 y:utils.withGrid(7),
                 src:"images/people/redMod.png",
-                useShadow: true
+                useShadow: true,
+                behaviorLoop: [
+                    {type: "walk", direction: "left", time: 500},
+                    {type: "walk", direction: "down", time: 700},
+                    {type: "walk", direction: "right", time: 1000},
+                    {type: "walk", direction: "up", time: 700}
+                ]
             }),
+            npc1 : new Person({
+                x: utils.withGrid(9),
+                y: utils.withGrid(6),
+                src: "images/people/npc4.png",
+                useShadow: true,
+                behaviorLoop: [
+                    {type: "walk", direction: "left"},
+                    {type: "stand", direction: "up", time: 500},
+                    {type: "stand", direction: "right", time: 1000},
+                    {type: "stand", direction: "down", time: 700}
+                ]
+            })
         },
         walls: {
             [utils.asGridCoords(7,6)]:true,
@@ -128,4 +151,4 @@ window.OverworldMaps = {
     
 }
 
-window.OverworldMaps.DemoRoom.gameObjects.lugia.player =  window.OverworldMaps.DemoRoom.gameObjects.girl;
+//window.OverworldMaps.DemoRoom.gameObjects.lugia.player =  window.OverworldMaps.DemoRoom.gameObjects.girl;
