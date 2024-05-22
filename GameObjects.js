@@ -43,10 +43,8 @@ class GameObjects{
         await eventHandler.init();
 
         this.behaviorLoopIndex += 1;
-        console.log(this.behaviorLoop.lenght);
         if(this.behaviorLoopIndex === this.behaviorLoop.length){
             this.behaviorLoopIndex = 0;
-            console.log("reset")
         }
         this.doBehaviorEvent(map);
     }

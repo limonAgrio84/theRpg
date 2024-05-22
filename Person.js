@@ -37,7 +37,7 @@ class Person extends GameObjects{
     startBehavior(state,behavior){
         //set character to whatever behavior it has
         this.direction = behavior.direction;
-        if(behavior.type = "walk"){
+        if(behavior.type === "walk"){
             //if theres a wall it would stop
             if(state.map.isSpaceTaken(this.x,this.y,this.direction)){
                 return;
@@ -46,6 +46,13 @@ class Person extends GameObjects{
             state.map.moveWall(this.x,this.y,this.direction);
             this.movingProgressRemaining = 16;
             this.updateSprite(state);
+        }
+        if(behavior.type === "stand"){
+            setTimeout(() =>{
+                utils.emitEvent("PersonStandingComplete",{
+                    whoId: this.id,
+                })
+            },behavior.time);
         }
     }
 

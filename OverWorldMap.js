@@ -81,15 +81,15 @@ window.OverworldMaps = {
                 
             }),
             hero : new Person({
-                x:utils.withGrid(2),
+                x:utils.withGrid(3),
                 y:utils.withGrid(7),
                 src:"images/people/redMod.png",
                 useShadow: true,
                 behaviorLoop: [
-                    {type: "walk", direction: "left", time: 500},
-                    {type: "walk", direction: "down", time: 700},
-                    {type: "walk", direction: "right", time: 1000},
-                    {type: "walk", direction: "up", time: 700}
+                    {type: "stand", direction: "up", time: 1000},
+                    {type: "stand", direction: "left", time: 700},
+                    {type: "walk", direction: "right"},
+
                 ]
             }),
             npc1 : new Person({
@@ -98,10 +98,9 @@ window.OverworldMaps = {
                 src: "images/people/npc4.png",
                 useShadow: true,
                 behaviorLoop: [
-                    {type: "walk", direction: "left"},
-                    {type: "stand", direction: "up", time: 500},
-                    {type: "stand", direction: "right", time: 1000},
-                    {type: "stand", direction: "down", time: 700}
+                    {type: "walk", direction: "right"},
+                    {type: "walk", direction: "left",time: 300},
+
                 ]
             })
         },
