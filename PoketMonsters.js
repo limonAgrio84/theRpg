@@ -8,7 +8,7 @@ class PoketMonster extends Person{
 
     update(state){
         this.checkPocket(state);
-        if(this.isActive){
+        if(this.isActive && !state.map.isCutscenePlaying){
         this.followThePlayer();
         this.updateSprite(state);
         if (this.movingProgressRemaining > 0) {

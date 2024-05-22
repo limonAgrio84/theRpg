@@ -2,6 +2,7 @@ class Person extends GameObjects{
     constructor(config){
         super(config);
         this.movingProgressRemaining = 0;
+        this.isStanding = false;
         this.isPlayerControlled = config.isPlayerControlled || false;
 
         this.directionUpdate = {
@@ -23,7 +24,7 @@ class Person extends GameObjects{
             //
 
             //Cae: We're keaboard ready and have arrow pressed
-            if(this.isPlayerControlled && this.movingProgressRemaining === 0 && state.arrow){
+            if(!state.map.isCutscenePlaying && this.isPlayerControlled && this.movingProgressRemaining === 0 && state.arrow){
                 this.startBehavior(state,{
                     type:"walk",
                     direction: state.arrow,
@@ -40,6 +41,10 @@ class Person extends GameObjects{
         if(behavior.type === "walk"){
             //if theres a wall it would stop
             if(state.map.isSpaceTaken(this.x,this.y,this.direction)){
+
+                behavior.retry && setTimeout(() => {
+                    this.startBehavior(state,behavior)
+                },100)
                 return;
             }
             //is ready to walk
@@ -48,10 +53,12 @@ class Person extends GameObjects{
             this.updateSprite(state);
         }
         if(behavior.type === "stand"){
+            this.isStanding = true;
             setTimeout(() =>{
                 utils.emitEvent("PersonStandingComplete",{
                     whoId: this.id,
                 })
+                this.isStanding = false;
             },behavior.time);
         }
     }

@@ -9,7 +9,7 @@ class OverworldMap {
 
         this.walls = config.walls || {};
 
-        this.isCutscenePlaying = false;
+        this.isCutscenePlaying = true;
     }
 
     drawLower(ctx,cameraPerson){
@@ -50,6 +50,26 @@ class OverworldMap {
         this.removeWall(wasX,wasY);
         const {x,y} = utils.nextPosition(wasX,wasY,direction);
         this.addWall(x,y);
+    }
+
+    async startCutscene(events){
+        this.isCutscenePlaying = true;
+        console.log("Iniciando cinemática...");
+        for (let i = 0; i < events.length; i++){
+            console.log("Evento", i, events[i]);
+            const eventHandler = new OverworldEvent({
+                event: events[i],
+                map: this,
+            });
+            await eventHandler.init();
+            console.log("Evento completado", i);
+        }
+        this.isCutscenePlaying = false;
+        console.log("Cinemática finalizada");
+
+        //Resets NPC to do their behaviour loop
+        Object.values(this.gameObjects).forEach(object => object.doBehaviorEvent(this));
+       
     }
 
     

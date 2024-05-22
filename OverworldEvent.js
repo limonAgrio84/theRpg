@@ -33,7 +33,8 @@ class OverworldEvent{
             map: this.map
         },{
             type: "walk",
-            direction: this.event.direction
+            direction: this.event.direction,
+            retry: true
         })
 
         const completeHandler = e => {
