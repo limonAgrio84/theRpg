@@ -61,17 +61,17 @@ window.OverworldMaps = {
         lowerSrc: "/images/maps/DemoRoom.png",
         upperSrc: "/images/maps/DemoUpper.png",
         gameObjects: {
-            //lugia: new PoketMonster({
-               // x: utils.withGrid(-100),
-                //y:utils.withGrid(-100),
-                //src: "images/poket-monsters/totodile.png",
-                //useShadow: true,
+            lugia: new PoketMonster({
+                x: utils.withGrid(-100),
+                y:utils.withGrid(-100),
+                src: "images/poket-monsters/totodile.png",
+                useShadow: true,
                 //Solo si es un Pokemon Grande 
                 //specialAnimation: 64,
                 //Solo si es un Pokemon Grande 
                 //specialSize: true,
-                //player: null 
-            //}),
+                player: null 
+            }),
             girl: new Person({
                 isPlayerControlled: true,
                 x: utils.withGrid(4),
@@ -150,4 +150,4 @@ window.OverworldMaps = {
     
 }
 
-//window.OverworldMaps.DemoRoom.gameObjects.lugia.player =  window.OverworldMaps.DemoRoom.gameObjects.girl;
+window.OverworldMaps.DemoRoom.gameObjects.lugia.player =  window.OverworldMaps.DemoRoom.gameObjects.girl;
