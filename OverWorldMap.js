@@ -210,8 +210,49 @@ window.OverworldMaps = {
             [utils.asGridCoords(11,5)]:true,
             [utils.asGridCoords(11,4)]:true,
         }
+    },
+    smallCity:{
+        lowerSrc: "/images/maps/StreetNorthLower.png",
+        upperSrc: "/images/maps/StreetNorthUpper.png",
+        gameObjects:{
+            lugia: new PoketMonster({
+                x: utils.withGrid(-100),
+                y:utils.withGrid(-100),
+                src: "images/poket-monsters/totodile.png",
+                useShadow: true,
+                //Solo si es un Pokemon Grande 
+                //specialAnimation: 64,
+                //Solo si es un Pokemon Grande 
+                //specialSize: true,
+                player: null 
+            }),
+            girl: new Person({
+                isPlayerControlled: true,
+                x: utils.withGrid(4),
+                y: utils.withGrid(6),
+                src: "images/people/girlPokemon.png",
+                useShadow: true,
+                
+            }),
+            hero : new Person({
+                x:utils.withGrid(3),
+                y:utils.withGrid(7),
+                src:"images/people/redMod.png",
+                useShadow: true,
+                behaviorLoop: [
+                    {type: "stand", direction: "up", time: 1000},
+                    {type: "stand", direction: "left", time: 700},
+                    {type: "walk", direction: "right"},
+                    {type: "stand", direction: "down", time: 1000},
+                    {type: "stand", direction: "right", time: 700},
+                    {type: "walk", direction: "left"},
+
+                ]
+        }),
     }
     
 }
+}
 
 window.OverworldMaps.DemoRoom.gameObjects.lugia.player =  window.OverworldMaps.DemoRoom.gameObjects.girl;
+window.OverworldMaps.smallCity.gameObjects.lugia.player =  window.OverworldMaps.smallCity.gameObjects.girl;
