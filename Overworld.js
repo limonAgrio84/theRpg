@@ -59,7 +59,11 @@ class Overworld{
           {who: "girl" ,type: "walk", direction: "down"},
           {who: "girl" ,type: "walk", direction: "right"},
           {who: "hero" ,type: "stand", direction: "right",time:700},
-          {who: "hero" ,type: "stand", direction: "left",time:1000}
+          {who: "hero" ,type: "stand", direction: "left",time:1000},
+          {type:"textMessage", text:"Hi, wellcome to the demo of fruitMonsters an open world rpg with tons of customization and variety"},
+          {type:"textMessage", text:"Take this totodile"},
+          {type:"textMessage", text:"Press p to take out of your pocket"},
+
         ])
     }
 }

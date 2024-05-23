@@ -1,3 +1,11 @@
+:root{
+    --border-color: #291d4d;
+    --dialog-background: #fff3b4;
+    --menu-background: #A48465;
+    --menu-font-color: #3a160d;
+    --menu-selected-background: #7fc2ff;
+}
+
 *{
     box-sizing: border-box;
 }
@@ -13,8 +21,7 @@ body{
 .game-container{
     position: relative;
     width: 352px;
-    height: 198px; 
-    border: 1.5px solid white;  
+    height: 198px;  
     margin: auto;
     margin-top: 20px;
 
