@@ -22,6 +22,7 @@ body{
     position: relative;
     width: 352px;
     height: 198px;  
+    border: 1.5px solid white;
     margin: auto;
     margin-top: 20px;
 

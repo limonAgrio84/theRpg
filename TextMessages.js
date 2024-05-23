@@ -20,7 +20,6 @@ class TextMessage{
 
         });
         this.actionListener = new KeyPressListener("Enter",()=>{
-            console.log("Enter!")
             this.done()
             this.actionListener.unbind();
         })

@@ -9,7 +9,7 @@ class OverworldMap {
 
         this.walls = config.walls || {};
 
-        this.isCutscenePlaying = true;
+        this.isCutscenePlaying = false;
     }
 
     drawLower(ctx,cameraPerson){
@@ -54,22 +54,29 @@ class OverworldMap {
 
     async startCutscene(events){
         this.isCutscenePlaying = true;
-        console.log("Iniciando cinemática...");
         for (let i = 0; i < events.length; i++){
-            console.log("Evento", i, events[i]);
             const eventHandler = new OverworldEvent({
                 event: events[i],
                 map: this,
             });
             await eventHandler.init();
-            console.log("Evento completado", i);
         }
         this.isCutscenePlaying = false;
-        console.log("Cinemática finalizada");
 
         //Resets NPC to do their behaviour loop
         Object.values(this.gameObjects).forEach(object => object.doBehaviorEvent(this));
        
+    }
+
+    checkForActionCutscene(){
+        const girl = this.gameObjects["girl"];
+        const nextCoords = utils.nextPosition(girl.x,girl.y,girl.direction);
+        const match = Object.values(this.gameObjects).find(object =>{
+            return`${object.x},${object.y}` === `${nextCoords.x},${nextCoords.y}`;
+        });
+        if(!this.isCutscenePlaying && match && match.talking.length){
+            this.startCutscene(match.talking[0].events)
+          }
     }
 
     
@@ -100,7 +107,7 @@ window.OverworldMaps = {
                 useShadow: true,
                 
             }),
-            hero : new Person({
+            red : new Person({
                 x:utils.withGrid(3),
                 y:utils.withGrid(7),
                 src:"images/people/redMod.png",
@@ -113,58 +120,33 @@ window.OverworldMaps = {
                     {type: "stand", direction: "right", time: 700},
                     {type: "walk", direction: "left"},
 
+                ],
+                talking: [
+                    {
+                        events:[
+                            {type:"textMessage", text:"No puedo dejar de girar :("},
+                            {type:"textMessage", text:"Igual y si encuentras el SUPER ramen podrias salvarme"}
+                        ]
+                    }
                 ]
             }),
-            npc1 : new Person({
+            npcA : new Person({
                 x: utils.withGrid(9),
                 y: utils.withGrid(6),
                 src: "images/people/npc4.png",
                 useShadow: true,
                 behaviorLoop: [
-                    {type: "walk", direction: "down"},
-                    {type: "walk", direction: "down"},
-                    {type: "walk", direction: "down"},
-                    {type: "walk", direction: "left",time: 300},
-                    {type: "walk", direction: "left",time: 300},
-                    {type: "walk", direction: "left",time: 300},
-                    {type: "walk", direction: "left",time: 300},
-                    {type: "walk", direction: "down"},
-                    {type: "walk", direction: "down"},
-                    {type: "walk", direction: "down"},
-                    {type: "walk", direction: "down"},
-                    {type: "walk", direction: "down"},
-                    {type: "walk", direction: "down"},
-                    {type: "walk", direction: "down"},
-                    {type: "walk", direction: "down"},
-                    {type: "walk", direction: "up"},
-                    {type: "walk", direction: "up"},
-                    {type: "walk", direction: "up"},
-                    {type: "walk", direction: "up"},
-                    {type: "walk", direction: "up"},
-                    {type: "walk", direction: "up"},
-                    {type: "walk", direction: "up"},
-                    {type: "walk", direction: "up"},
-                    {type: "walk", direction: "up"},
-                    {type: "walk", direction: "up"},
-                    {type: "walk", direction: "up"},
-                    {type: "stand", direction: "right",time:1000},
-                    {type: "stand", direction: "left",time:1000},
-                    {type: "stand", direction: "up",time:1000},
-                    {type: "stand", direction: "right",time:1000},
-                    {type: "walk", direction: "right",time:1000},
-                    {type: "walk", direction: "up"},
-                    {type: "walk", direction: "up"},
-                    {type: "walk", direction: "up"},
-                    {type: "walk", direction: "up"},
-                    {type: "walk", direction: "down"},
-                    {type: "walk", direction: "down"},
-                    {type: "walk", direction: "down"},
-                    {type: "walk", direction: "right"},
-                    {type: "walk", direction: "right"},
-                    {type: "walk", direction: "right"},
-                    {type: "walk", direction: "down"},
-
-
+                    {type: "stand", direction: "up", time: 3000},
+                    {type: "stand", direction: "right", time: 4000},
+                    {type: "stand", direction: "right", time: 2700},
+                ],
+                talking:[
+                    {
+                        events:[
+                            {type:"textMessage", text:"Tengo hambre :/",faceHero: "npcA"},
+                            {type:"textMessage", text:"Tengo hambre :/"},
+                        ]
+                    }
                 ]
             })
         },

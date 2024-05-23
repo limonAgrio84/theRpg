@@ -12,8 +12,10 @@ class GameObjects{
             specialAnimation: config.specialAnimation || 32,
         });
 
-        this.behaviorLoop = config.behaviorLoop || []
+        this.behaviorLoop = config.behaviorLoop || [];
         this.behaviorLoopIndex = 0;
+
+        this.talking = config.talking || [];
     }
     mount(map){
         console.log("mounting");

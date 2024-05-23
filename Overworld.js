@@ -43,27 +43,40 @@ class Overworld{
       step();
     }
 
+    bindActionInput(){
+      new KeyPressListener("Enter", ()=>{
+        //is there a person here to talk?
+        this.map.checkForActionCutscene()
+        
+      })
+    }
+
     init(){
       this.map = new OverworldMap(window.OverworldMaps.DemoRoom);
       this.map.mountObjects();
+
+      this.bindActionInput();
+
       this.directionInput = new InputDirection();
       this.directionInput.init()
       this.startGameLoop();
 
-        this.map.startCutscene([
-          {who: "hero",type: "walk", direction: "right"},
-          {who: "girl" ,type: "walk", direction: "left"},
-          {who: "hero" ,type: "walk", direction: "right"},
-          {who: "girl" ,type: "walk", direction: "left"},
-          {who: "hero" ,type: "walk", direction: "left"},
-          {who: "girl" ,type: "walk", direction: "down"},
-          {who: "girl" ,type: "walk", direction: "right"},
-          {who: "hero" ,type: "stand", direction: "right",time:700},
-          {who: "hero" ,type: "stand", direction: "left",time:1000},
-          {type:"textMessage", text:"Hi, wellcome to the demo of fruitMonsters an open world rpg with tons of customization and variety"},
-          {type:"textMessage", text:"Take this totodile"},
-          {type:"textMessage", text:"Press p to take out of your pocket"},
+        //this.map.startCutscene([
+          //{who: "hero",type: "walk", direction: "right"},
+          //{who: "girl" ,type: "walk", direction: "left"},
+          //{who: "hero" ,type: "walk", direction: "right"},
+          //{who: "girl" ,type: "walk", direction: "left"},
+          //{who: "hero" ,type: "walk", direction: "left"},
+          //{who: "girl" ,type: "walk", direction: "down"},
+          //{who: "girl" ,type: "walk", direction: "right"},
+          //{who: "hero" ,type: "stand", direction: "right",time:700},
+          //{who: "hero" ,type: "stand", direction: "left",time:1000},
+          //{type:"textMessage", text:"Hi, wellcome to the demo of fruitMonsters an open world rpg with tons of customization and variety"},
+          //{type:"textMessage", text:"Take this totodile"},
+          //{type:"textMessage", text:"Press p to take out of your pocket"},
 
-        ])
+        //])
+
+
     }
 }
