@@ -40,9 +40,15 @@ body {
     image-rendering: pixelated;
 }
 
-@media (max-width: 1600px) {
+@media (max-width: 1500px) {
     .game-container {
         transform: scale(3); /* Puedes ajustar esto según sea necesario */
+    }
+}
+
+@media (max-width: 700px) {
+    .game-container {
+        transform: scale(2); /* Puedes ajustar esto según sea necesario */
     }
 }
 
