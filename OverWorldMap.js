@@ -1,7 +1,7 @@
 class OverworldMap {
     constructor(config) {
         this.gameObjects = config.gameObjects;
-
+        this.cutsceneSpaces = config.cutsceneSpaces || {};
         this.lowerImage = new Image();
         this.lowerImage.src = config.lowerSrc;
         this.upperImage = new Image();
@@ -78,6 +78,13 @@ class OverworldMap {
             this.startCutscene(match.talking[0].events)
           }
     }
+    cheForFoostepCutscene(){
+        const girl = this.gameObjects["girl"];
+        const match = this.cutsceneSpaces[`${girl.x},${girl.y}`];
+        if(!this.isCutscenePlaying && match){
+            this.startCutscene(match[0].events)
+        }
+    }
 
     
 }
@@ -108,17 +115,11 @@ window.OverworldMaps = {
                 
             }),
             red : new Person({
-                x:utils.withGrid(3),
-                y:utils.withGrid(7),
+                x:utils.withGrid(7),
+                y:utils.withGrid(5),
                 src:"images/people/redMod.png",
                 useShadow: true,
                 behaviorLoop: [
-                    {type: "stand", direction: "up", time: 1000},
-                    {type: "stand", direction: "left", time: 700},
-                    {type: "walk", direction: "right"},
-                    {type: "stand", direction: "down", time: 1000},
-                    {type: "stand", direction: "right", time: 700},
-                    {type: "walk", direction: "left"},
 
                 ],
                 talking: [
@@ -191,6 +192,20 @@ window.OverworldMaps = {
             [utils.asGridCoords(11,6)]:true,
             [utils.asGridCoords(11,5)]:true,
             [utils.asGridCoords(11,4)]:true,
+        },
+        cutsceneSpaces: {
+            [utils.asGridCoords(6,4)]: [
+                {
+                    events: [
+                        {who: "red",type:"walk", direction:"left"},
+                        {who: "red",type:"stand", direction:"up", time:500},
+                        {type:"textMessage", text:"HEY!!!"},
+                        {type:"textMessage", text:"you can not be in there!"},
+                        {who: "red",type:"walk", direction:"right"},
+                        {who: "girl",type:"walk", direction:"down"},
+                        {who: "girl", type:"walk", direction: "left"},
+                    ]
+            }]
         }
     },
     smallCity:{

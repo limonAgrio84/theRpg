@@ -51,31 +51,40 @@ class Overworld{
       })
     }
 
+    bindGirlPosition(){
+      document.addEventListener("PersonWalkingComplete",e => {
+        if(e.detail.whoId === "girl"){
+          console.log("new Pos")
+          //girl's position has change 
+          this.map.cheForFoostepCutscene()
+        }
+      })
+    }
+
     init(){
       this.map = new OverworldMap(window.OverworldMaps.DemoRoom);
       this.map.mountObjects();
 
       this.bindActionInput();
-
+      this.bindGirlPosition();
       this.directionInput = new InputDirection();
       this.directionInput.init()
       this.startGameLoop();
 
-        this.map.startCutscene([
-          {who: "red",type: "walk", direction: "right"},
-          {who: "girl" ,type: "walk", direction: "left"},
-          {who: "red" ,type: "walk", direction: "right"},
-          {who: "girl" ,type: "walk", direction: "left"},
-          {who: "red" ,type: "walk", direction: "left"},
-          {who: "girl" ,type: "walk", direction: "down"},
-          {who: "girl" ,type: "walk", direction: "right"},
-          {who: "red" ,type: "stand", direction: "right",time:700},
-          {who: "red" ,type: "stand", direction: "left",time:1000},
-          {type:"textMessage", text:"Hi, wellcome to the demo of fruitMonsters an open world rpg with tons of customization and variety"},
-          {type:"textMessage", text:"Take this totodile"},
-          {type:"textMessage", text:"Press p to take out of your pocket"},
+        //this.map.startCutscene([
+          //{who: "girl" ,type: "walk", direction: "left"},
+          //{who: "red" ,type: "walk", direction: "right"},
+          //{who: "girl" ,type: "walk", direction: "left"},
+          //{who: "red" ,type: "walk", direction: "left"},
+          //{who: "girl" ,type: "walk", direction: "down"},
+          //{who: "girl" ,type: "walk", direction: "right"},
+          //{who: "red" ,type: "stand", direction: "right",time:700},
+          //{who: "red" ,type: "stand", direction: "left",time:1000},
+          //{type:"textMessage", text:"Hi, wellcome to the demo of fruitMonsters an open world rpg with tons of customization and variety"},
+          //{type:"textMessage", text:"Take this totodile"},
+          //{type:"textMessage", text:"Press p to take out of your pocket"},
 
-        ])
+        //])
 
 
     }
