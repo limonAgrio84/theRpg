@@ -200,8 +200,10 @@ window.OverworldMaps = {
                     events: [
                         {who: "red",type:"walk", direction:"left"},
                         {who: "red",type:"stand", direction:"up", time:500},
+                        {who: "girl",type:"stand", direction:"down", time:1},
                         {type:"textMessage", text:"HEY!!!"},
                         {type:"textMessage", text:"you can not be in there!"},
+                        {type:"textMessage", text:"if you want to leave I recommend you to go to the block with an arrow"},
                         {who: "red",type:"walk", direction:"right"},
                         {who: "girl",type:"walk", direction:"down"},
                         {who: "girl", type:"walk", direction: "left"},
