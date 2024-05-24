@@ -1,3 +1,4 @@
+
 .TextMessage{
     position: absolute;
     left: 0;
@@ -6,24 +7,26 @@
     height: 36px;
     font-size: 13px;
     padding: 4px;
-    background: var(--menu-background);
-    border-top: 1px solid var(--menu-border-color);
-    color: var(--menu-font-color)
+    background: rgb(215, 220, 225);
+    border: 1px solid black;
+    color: var(--menu-font-color);
 }
 
 .TextMessage_p{
     margin: 0;
     font-size: 13px;
+    font-family: "Silkscreen",Pixelify Sans;
+    font-size: 10px;
 
 }
 .TextMessage_button{
     margin: 0;
-    font-size: 9px;
+    font-size: 6px;
     padding: 0;
     -webkit-appearance: none;
     background: none;
     border: 0;
-    font-family: inherit;
+    font-family: "Silkscreen",Pixelify Sans;
     cursor: pointer;
     
     position: absolute;

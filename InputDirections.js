@@ -31,6 +31,7 @@ class InputDirection {
     }
     init(){
         document.addEventListener("keydown", e =>{
+            console.log(e.code)
             const dir = this.map[e.code];
             const input = this.buttonInputs[e.code];
             if (dir && this.heldDirections.indexOf(dir)===-1){

@@ -126,8 +126,8 @@ window.OverworldMaps = {
                 talking: [
                     {
                         events:[
-                            {type:"textMessage", text:"No puedo dejar de girar :("},
-                            {type:"textMessage", text:"Igual y si encuentras el SUPER ramen podrias salvarme"}
+                            {type:"textMessage", text:"I need to eat that pizzaaa!!!"},
+                            {type:"textMessage", text:"But I need to make sure that no one enters"}
                         ]
                     }
                 ]

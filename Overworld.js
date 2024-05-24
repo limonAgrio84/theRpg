@@ -44,7 +44,7 @@ class Overworld{
     }
 
     bindActionInput(){
-      new KeyPressListener("Enter", ()=>{
+      new KeyPressListener("Space", ()=>{
         //is there a person here to talk?
         this.map.checkForActionCutscene()
         
