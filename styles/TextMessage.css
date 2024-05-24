@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'Pixel Operator';
+    font-family: 'Pixel Operator8-Bold';
     src: url('fonts/PixelOperator8-Bold.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
@@ -24,13 +24,13 @@
 .TextMessage_p{
     margin: 0;
     font-family: Pixel Operator8-Bold,Roboto Mono;
-    font-size: 12px;
+    font-size: 11px;
 
 }
 
 .TextMessage_button{
     margin: 0;
-    font-size: 6px;
+    font-size: 8px;
     padding: 0;
     -webkit-appearance: none;
     background: none;

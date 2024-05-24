@@ -10,24 +10,44 @@
     box-sizing: border-box;
 }
 
-body{
+body {
     background: #90b0bf;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-.game-container{
+.game-container {
     position: relative;
-    width: 352px;
-    height: 198px;  
-    margin: auto;
-    margin-top: 20px;
-
-    transform: scale(3) translateY(35%);
+    width: 100%;
+    max-width: 352px;
+    height: auto;
+    aspect-ratio: 352 / 198;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(4) translateY(-10%); /* Ajusta esto si necesitas escalar adicionalmente */
 }
 
-.game-container canvas{
+.game-container canvas {
+    width: 100%;
+    height: 100%;
     image-rendering: pixelated;
+}
+
+@media (max-width: 1600px) {
+    .game-container {
+        transform: scale(3); /* Puedes ajustar esto según sea necesario */
+    }
+}
+
+@media (max-width: 400px) {
+    .game-container {
+        transform: scale(1); /* Puedes ajustar esto según sea necesario */
+    }
 }
