@@ -67,7 +67,6 @@ class OverworldEvent{
     }
 
     changeMap(resolve){
-        console.log("hola")
         this.map.overworld.startMap(window.OverworldMaps[this.event.map])
         resolve();
     }
