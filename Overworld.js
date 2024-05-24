@@ -54,7 +54,6 @@ class Overworld{
     bindGirlPosition(){
       document.addEventListener("PersonWalkingComplete",e => {
         if(e.detail.whoId === "girl"){
-          console.log("new Pos")
           //girl's position has change 
           this.map.cheForFoostepCutscene()
         }
