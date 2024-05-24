@@ -8,7 +8,7 @@ class PoketMonster extends Person{
 
     update(state){
         this.checkPocket(state);
-        if(this.isActive && !state.map.isCutscenePlaying){
+        if(this.isActive){
         this.followThePlayer();
         this.updateSprite(state);
         if (this.movingProgressRemaining > 0) {
@@ -21,7 +21,7 @@ class PoketMonster extends Person{
 
     }
 }
-    followThePlayer(){
+    followThePlayer(state){
         const playerX = this.player.x;
         const playerY = this.player.y;
         const dir = this.player.direction;
@@ -78,6 +78,11 @@ class PoketMonster extends Person{
 }
 
     checkPocket(state) {
+        if(state.map.isCutscenePlaying){
+            this.isActive = false;
+            this.x = -100;
+            this.y = -100;
+        }
         const pocket = state.button;
         if (pocket === "poket") {
             this.toogleIsActive();
