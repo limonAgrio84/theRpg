@@ -6,17 +6,19 @@
     bottom: 0;
     height: 36px;
     font-size: 13px;
-    padding: 4px;
+    padding: 3px;
     background: rgb(215, 220, 225);
     border: 1px solid black;
     color: var(--menu-font-color);
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3), /* Sombra lateral */
+    6px 6px 0px rgba(0, 0, 0, 0.2); /* Sombra inferior */
+    transform: translate(0px, -5px); /* Ajuste de posición para crear el efecto 3D */
 }
 
 .TextMessage_p{
     margin: 0;
-    font-size: 13px;
-    font-family: "Silkscreen",Pixelify Sans;
-    font-size: 10px;
+    font-family: Pixel Operator,"Silkscreen",Pixelify Sans;
+    font-size: 12.5px;
 
 }
 .TextMessage_button{
@@ -26,7 +28,7 @@
     -webkit-appearance: none;
     background: none;
     border: 0;
-    font-family: "Silkscreen",Pixelify Sans;
+    font-family: Hack Nerd Font,"Silkscreen",Pixelify Sans;
     cursor: pointer;
     
     position: absolute;
