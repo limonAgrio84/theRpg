@@ -133,8 +133,8 @@ window.OverworldMaps = {
                 ]
             }),
             npcA : new Person({
-                x: utils.withGrid(9),
-                y: utils.withGrid(6),
+                x: utils.withGrid(5),
+                y: utils.withGrid(10),
                 src: "images/people/npc4.png",
                 useShadow: true,
                 behaviorLoop: [
