@@ -1,12 +1,18 @@
+@font-face {
+    font-family: 'Pixel Operator';
+    src: url('fonts/PixelOperator8-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
 .TextMessage{
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
-    height: 36px;
-    font-size: 13px;
-    padding: 3px;
+    height: auto;
+    font-size: 14px;
+    padding: 5px;
     background: rgb(215, 220, 225);
     border: 1px solid black;
     color: var(--menu-font-color);
@@ -17,10 +23,11 @@
 
 .TextMessage_p{
     margin: 0;
-    font-family: Pixel Operator,"Silkscreen",Pixelify Sans;
-    font-size: 12.5px;
+    font-family: Pixel Operator8-Bold,VT323,Roboto Mono;
+    font-size: 12px;
 
 }
+
 .TextMessage_button{
     margin: 0;
     font-size: 6px;
@@ -28,7 +35,8 @@
     -webkit-appearance: none;
     background: none;
     border: 0;
-    font-family: Hack Nerd Font,"Silkscreen",Pixelify Sans;
+    font-family: VT323,Roboto Mono;
+    font-weight: 550;
     cursor: pointer;
     
     position: absolute;
