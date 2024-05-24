@@ -60,10 +60,15 @@ class Overworld{
       })
     }
 
-    init(){
-      this.map = new OverworldMap(window.OverworldMaps.DemoRoom);
+    startMap(mapConfig){
+      console.log(mapConfig);
+      this.map = new OverworldMap(mapConfig);
+      this.map.overworld = this;
       this.map.mountObjects();
+    }
 
+    init(){
+      this.startMap(window.OverworldMaps.DemoRoom);
       this.bindActionInput();
       this.bindGirlPosition();
       this.directionInput = new InputDirection();

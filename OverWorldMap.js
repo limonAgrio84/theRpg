@@ -1,5 +1,6 @@
 class OverworldMap {
     constructor(config) {
+        this.overworld = null;
         this.gameObjects = config.gameObjects;
         this.cutsceneSpaces = config.cutsceneSpaces || {};
         this.lowerImage = new Image();
@@ -205,8 +206,15 @@ window.OverworldMaps = {
                         {who: "girl",type:"walk", direction:"down"},
                         {who: "girl", type:"walk", direction: "left"},
                     ]
-            }]
-        }
+            }
+        ],
+        [utils.asGridCoords(5,10)]:[
+            {
+            events:[
+                {type: "changeMap",map:"smallCity"}
+            ]
+        }]
+    }
     },
     smallCity:{
         lowerSrc: "/images/maps/StreetNorthLower.png",
@@ -231,9 +239,9 @@ window.OverworldMaps = {
                 useShadow: true,
                 
             }),
-            hero : new Person({
+            npcB : new Person({
                 x:utils.withGrid(3),
-                y:utils.withGrid(7),
+                y:utils.withGrid(8),
                 src:"images/people/redMod.png",
                 useShadow: true,
                 behaviorLoop: [
@@ -244,6 +252,14 @@ window.OverworldMaps = {
                     {type: "stand", direction: "right", time: 700},
                     {type: "walk", direction: "left"},
 
+                ],
+                talking:[
+                    {
+                        events:[
+                            {type:"textMessage", text:"You did it!",faceHero: "npcB"},
+                            {type:"textMessage", text:"Welcome to the city"},
+                        ]
+                    }
                 ]
         }),
     }
