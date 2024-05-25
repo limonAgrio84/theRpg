@@ -84,9 +84,7 @@ class Overworld{
           {who: "girl" ,type: "walk", direction: "right"},
           {who: "npcA" ,type: "walk", direction: "up"},
           {who: "npcA" ,type: "walk",direction:"left"},
-          {type:"textMessage", text:"Hi, wellcome to the demo of fruitMonsters an open world rpg with tons of customization and variety"},
-          {type:"textMessage", text:"Take this totodile"},
-          {type:"textMessage", text:"Press p to take out of your pocket"},
+          {type:"textMessage", text:"The very first message!!"},
 
         ])
 

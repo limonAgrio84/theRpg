@@ -1,9 +1,3 @@
-@font-face {
-    font-family: 'Pixel Operator8-Bold';
-    src: url('fonts/PixelOperator8-Bold.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
 
 .TextMessage{
     position: absolute;
@@ -24,22 +18,29 @@
 .TextMessage_p{
     margin: 0;
     font-family: Pixel Operator8-Bold,Roboto Mono;
-    font-size: 11px;
+    font-size: 8px;
 
 }
 
 .TextMessage_button{
     margin: 0;
-    font-size: 8px;
+    font-size: 4px;
     padding: 0;
     -webkit-appearance: none;
     background: none;
     border: 0;
-    font-family: VT323,Roboto Mono;
+    font-family: Roboto Mono;
     font-weight: 550;
     cursor: pointer;
     
     position: absolute;
     right: 2px;
     bottom: 0;
+}
+
+.TextMessage_p span{
+    opacity: 0;
+}
+.TextMessage span.revealed{
+    opacity: 1;
 }
