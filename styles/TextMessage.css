@@ -6,6 +6,7 @@
     right: 0;
     bottom: 0;
     height: auto;
+    min-height: 30px;
     font-size: 14px;
     padding: 5px;
     background: rgb(215, 220, 225);
